@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TODO List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a9a9a9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 10px;
+            font-family: times new roman;
+        }
+
+
+        li a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            text-align: center;
+            color: #888;
+        }
+
+        a.add-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a.add-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TO-DO List</h1>
+        <ul>
+            {% for contact in contacts %}
+                <li>
+                    TITLE: {{ contact.title }}&nbsp&nbsp&nbsp&nbsp&nbspDESCRIPTION: {{ contact.description }}
+                    <a href="{% url 'edit_contact' contact.id %}"><u>Edit</u></a>
+                    <a href="{% url 'delete_contact' contact.id %}"><u>Delete</u></a>
+                </li>
+            {% empty %}
+                <p>No TO-DO available.</p>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'add_contact' %}" class="add-button">Add TO-DO</a>
+    </div>
+</body>
+</html>
